@@ -5,6 +5,7 @@
                 :search-parameters="searchParameters"
                 :sweetwater-inventory="sweetwaterInventory"
             />
+            <VFilterRating attribute="rating" :max="5"></VFilterRating>
             <AisSearchBox />
             <AisStats />
             <SortBy />
@@ -18,7 +19,15 @@
 
 <script>
 /* eslint-disable */
-import { AisInstantSearchSsr, AisSearchBox, AisStats } from 'vue-instantsearch';
+import {
+    AisInstantSearchSsr,
+    AisSearchBox,
+    AisStats,
+    AisRatingMenu,
+} from 'vue-instantsearch';
+
+import VFilterRating from '../components/VFilterRating.vue';
+
 import {
     Configure,
     Hits,
@@ -40,6 +49,7 @@ export default {
         RefinementList,
         SelectedFilters,
         SortBy,
+        VFilterRating,
     },
     data() {
         return {
