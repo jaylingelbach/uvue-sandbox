@@ -28,7 +28,7 @@
         "sass-loader": "^10.0.2",
         "serve-static": "^1.13.2",
         "vue": "^2.6.12",
-        "vue-instantsearch": "3.2.0",
+        "vue-instantsearch": "^3.2.0",
         "vue-router": "^3.4.3",
         "vue-server-renderer": "^2.6.12"
     },
