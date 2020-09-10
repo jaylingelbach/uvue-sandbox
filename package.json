@@ -14,8 +14,8 @@
         "ssr:static": "vue-cli-service ssr:static"
     },
     "dependencies": {
-        "@uvue/core": "^0.1.0",
-        "@uvue/server": "^0.1.0",
+        "@uvue/core": "^0.1.7",
+        "@uvue/server": "^0.1.7",
         "algoliasearch": "4.4.0",
         "compression": "^1.7.3",
         "connect": "^3.6.6",
@@ -27,16 +27,17 @@
         "koa-static": "^5.0.0",
         "sass-loader": "^10.0.2",
         "serve-static": "^1.13.2",
-        "vue": "^2.6.11",
+        "vue": "^2.6.12",
         "vue-instantsearch": "3.2.0",
-        "vue-router": "^3.3.4"
+        "vue-router": "^3.4.3",
+        "vue-server-renderer": "^2.6.12"
     },
     "devDependencies": {
-        "@uvue/vue-cli-plugin-ssr": "~0.1.6",
-        "@vue/cli-plugin-babel": "~4.4.0",
-        "@vue/cli-plugin-eslint": "~4.4.0",
-        "@vue/cli-plugin-router": "~4.4.0",
-        "@vue/cli-service": "~4.4.0",
+        "@uvue/vue-cli-plugin-ssr": "^0.1.7",
+        "@vue/cli-plugin-babel": "^4.5.6",
+        "@vue/cli-plugin-eslint": "^4.5.6",
+        "@vue/cli-plugin-router": "^4.5.6",
+        "@vue/cli-service": "^4.5.6",
         "@vue/eslint-config-prettier": "^6.0.0",
         "babel-eslint": "^10.1.0",
         "eslint": "^6.7.2",
@@ -44,6 +45,6 @@
         "eslint-plugin-vue": "^6.2.2",
         "koa-webpack": "^5.3.0",
         "prettier": "^1.19.1",
-        "vue-template-compiler": "^2.6.11"
+        "vue-template-compiler": "^2.6.12"
     }
 }

@@ -1,14 +1,7 @@
 <template>
     <AisRatingMenu attribute="rating" :max="5">
-        <template
-            slot-scope="{
-                createURL,
-                refine,
-                items,
-                items: { length: optionsQty },
-            }"
-        >
-            <FilterUIBehaviors v-if="optionsQty" heading="Rating">
+        <template slot-scope="{ createURL, refine, items }">
+            <FilterUIBehaviors heading="Rating">
                 <ul>
                     <li v-for="item in items" :key="item.value">
                         <a
