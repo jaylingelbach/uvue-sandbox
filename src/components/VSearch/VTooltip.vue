@@ -18,8 +18,13 @@
 </template>
 
 <script>
+import VTooltipIcon from '@/components/icons/VTooltipIcon.vue';
+
 export default {
     name: 'VTooltip',
+    components: {
+        VTooltipIcon,
+    },
 };
 </script>
 
@@ -112,7 +117,6 @@ export default {
         min-width: 340px;
         position: absolute;
         top: -6px;
-    }
 
         &::before {
             background: #fff;
