@@ -69,7 +69,7 @@ const algoliaSearch = async ({ app, cmsPage, error, redirect, route }) => {
 
     const searchParameters = {
         filters: 'section:main',
-        hitsPerPage: app.$config.itemsPerPage,
+        hitsPerPage: 20,
     };
 
     let sectionArray = ['main'];
@@ -185,7 +185,7 @@ const algoliaSearch = async ({ app, cmsPage, error, redirect, route }) => {
         app.$algoliaIndexName,
         {
             disjunctiveFacets,
-            hitsPerPage: app.$config.itemsPerPage,
+            hitsPerPage: 20,
         },
     );
     helper.addDisjunctiveFacetRefinement('section', sectionArray);

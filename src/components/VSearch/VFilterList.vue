@@ -65,11 +65,13 @@
                             <span
                                 class="filter-list__label"
                                 data-testid="VFilterList.filterLabel"
-                            >{{ item.value }}</span>
+                                >{{ item.value }}</span
+                            >
                             <span
                                 class="filter-list__count"
                                 data-testid="VFilterList.filterCount"
-                            >({{ item.count.toLocaleString() }})</span>
+                                >({{ item.count.toLocaleString() }})</span
+                            >
                         </a>
                     </li>
                 </ul>
@@ -79,7 +81,9 @@
                     data-testid="VFilterList.filterToggle"
                     class="filter-list__toggle flat-secondary-small"
                     @click="toggleShowMore"
-                >{{ getFilterToggleText(filterOptionsQty) }}</button>
+                >
+                    {{ getFilterToggleText(filterOptionsQty) }}
+                </button>
             </FilterUIBehaviors>
         </template>
     </AisRefinementList>

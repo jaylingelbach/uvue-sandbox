@@ -5,36 +5,13 @@
                 :search-parameters="searchParameters"
                 :sweetwater-inventory="sweetwaterInventory"
             />
+            <VFilterRating attribute="rating" :max="5"></VFilterRating>
             <AisSearchBox />
-            <template #vFilterList>
-                <div
-                    v-for="(group, i) in userData"
-                    :key="typeof group.source === 'string' ? group.source : i"
-                >
-                    <component
-                        :is="searchComponents[group.type]"
-                        v-if="searchComponents[group.type]"
-                        :collapsed="group.collapsed"
-                        :sort="group.sort"
-                        :source="group.source"
-                        :title="group.title"
-                        :text="group.text"
-                        :remove-url="group.removeUrl"
-                    />
-                </div>
-            </template>
-            <VFiltersMenu
-                v-if="hasFilters"
-                class="product-grid__filters"
-                data-testid="product-grid__filters"
-                @filtersMenuCollapsed="handleFiltersMenuCollapsed"
-            >
-                <slot name="vFilterList" />
-            </VFiltersMenu>
             <AisStats />
             <SortBy />
             <SelectedFilters />
-            <RefinementList />
+            <VFilterList :attribute="sweetwaterInventory" />
+            <RefinementList :limit="1000" />
             <Hits :sweetwater-inventory="sweetwaterInventory" />
             <Pagination />
         </AisInstantSearchSsr>
@@ -46,22 +23,12 @@
 import {
     AisInstantSearchSsr,
     AisSearchBox,
-    AisRefinementList,
     AisStats,
     AisRatingMenu,
-    AisHits,
 } from 'vue-instantsearch';
 
 import VFilterRating from '../components/VFilterRating.vue';
-import VFilterList from '../components/VSearch/VFilterList.vue';
-import VFilterColors from '../components/VSearch/VFilterColor';
-import FilterUIBehaviors from '../components/VSearch/FilterUIBehaviors';
-import VFiltersMenu from '../components/VSearch/VFiltersMenu.vue';
-import userData from '../components/modules/combineFacets';
-import {
-    algoliaSearch,
-    redirectMinimumPage,
-} from '../components/modules/algoliaHelpers.js';
+import VFilterList from '../components/VSearch/VFilterList';
 
 import {
     Configure,
@@ -71,13 +38,6 @@ import {
     SelectedFilters,
     SortBy,
 } from '@/components';
-
-const searchComponents = {
-    list: 'VFilterList',
-    single: 'VFilterSingleOption',
-    tree: 'VFilterHierarchical',
-    swatch: 'VFilterColor',
-};
 
 export default {
     name: 'Search',
@@ -92,47 +52,19 @@ export default {
         SelectedFilters,
         SortBy,
         VFilterRating,
-        VFiltersMenu,
         VFilterList,
-        VFilterColors,
-        FilterUIBehaviors,
-    },
-    async asyncData({ app, error, redirect, route }) {
-        redirectMinimumPage({ redirect, route });
-
-        const { searchParameters } = await algoliaSearch({
-            app,
-            error,
-            redirect,
-            route,
-        });
-        return { searchParameters };
     },
     data() {
         return {
-            searchComponents,
             searchParameters: {
                 filters: 'section:main',
                 hitsPerPage: 20,
             },
-            userData,
         };
     },
     computed: {
         sweetwaterInventory() {
             return this.$indexName !== this.$defaultIndex;
-        },
-        hasFilters() {
-            // Put logic to determine if filters should appear here ;-)
-            return true;
-        },
-    },
-    methods: {
-        handleFiltersMenuCollapsed(isCollapsed) {
-            this.curtainActive = !isCollapsed;
-        },
-        lazyLoaded(index) {
-            return Boolean(index >= this.$config.productGridImagesToLoad);
         },
     },
     serverPrefetch() {},
